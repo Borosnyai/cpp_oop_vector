@@ -1,0 +1,88 @@
+{
+  "tests": [
+    {
+      "name": "Constructor",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [constructors]",
+      "timeout": 5,
+      "points": 9
+    },
+    {
+      "name": "Vector Addition",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [addition]",
+      "timeout": 1,
+      "points": 9
+    },
+    {
+      "name": "Vector Subtraction",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [subtraction]",
+      "timeout": 1,
+      "points": 9
+    },
+    {
+      "name": "Dot Product",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [dot]",
+      "timeout": 1,
+      "points": 9
+    },
+    {
+      "name": "Vector * scalar",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [times_scalar]",
+      "timeout": 1,
+      "points": 8
+    },
+    {
+      "name": "Scalar * vector",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [scalar_times]",
+      "timeout": 1,
+      "points": 8
+    },
+    {
+      "name": "Cross Product",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [vector]",
+      "timeout": 1,
+      "points": 8
+    },
+    {
+      "name": "Length and Magnitude",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [length]",
+      "timeout": 1,
+      "points": 8
+    },
+    {
+      "name": "Output Stream Operator",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [ostream]",
+      "timeout": 1,
+      "points": 8
+    },
+    {
+      "name": "Zero Vector Operations",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [zero]",
+      "timeout": 1,
+      "points": 8
+    },
+    {
+      "name": "Parallel Vectors Cross Product",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [parallel]",
+      "timeout": 1,
+      "points": 8
+    },
+    {
+      "name": "Large Vector Operations",
+      "setup": "mkdir -p build && cd build; cmake ..; make -j4",
+      "run": "cd build; ./vector_test [large]",
+      "timeout": 1,
+      "points": 8
+    }
+  ]
+}
