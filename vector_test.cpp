@@ -39,22 +39,22 @@ TEST_CASE("Vector constructors", "[constructors]") {
 TEST_CASE("Vector Addition", "[addition]") {
   const Vector a{1, 2, 3};
   const Vector b{4, 5, 6};
-  const Vector v1{a + b};
+  const Vector v1{a.plus(b)};
   const Vector expected_v1{1+4, 2+5, 3+6};
   require_almost_equal(v1, expected_v1);
 
-  const Vector v2{Vector{7.65, -3.4, 0.9} + Vector{-7.65, 3.8, 1.7}};
+  const Vector v2{Vector{7.65, -3.4, 0.9}.plus(Vector{-7.65, 3.8, 1.7})};
   const Vector expected_v2{0.0, 0.4, 2.6};
   require_almost_equal(v2, expected_v2);
 }
 
 
 TEST_CASE("Vector Subtraction", "[subtraction]") {
-  Vector v1{Vector {1, 2, 3} - Vector {4, 5, 6}};
+  Vector v1{Vector {1, 2, 3}.minus(Vector {4, 5, 6})};
   Vector expected_v1{1-4, 2-5, 3-6};
   require_almost_equal(v1, expected_v1);
 
-  Vector v2{Vector{7.65, -3.4, 0.9} - Vector{-7.65, 3.8, 1.7}};
+  Vector v2{Vector{7.65, -3.4, 0.9}.minus(Vector{-7.65, 3.8, 1.7})};
   Vector expected_v2{15.3, -7.2, -0.8};
   require_almost_equal(v2, expected_v2);
 }
@@ -81,35 +81,26 @@ TEST_CASE("Dot Product", "[dot]") {
   }
 
   SECTION("dot operator (operator*)") {
-    REQUIRE_THAT(a * b, Catch::Matchers::WithinRel(ab_expected, MARGIN) ||
+    REQUIRE_THAT(a.times(b), Catch::Matchers::WithinRel(ab_expected, MARGIN) ||
                            Catch::Matchers::WithinAbs(ab_expected, EPSILON));
-    REQUIRE_THAT(b * a, Catch::Matchers::WithinRel(ab_expected, MARGIN) ||
+    REQUIRE_THAT(b.times(a), Catch::Matchers::WithinRel(ab_expected, MARGIN) ||
                            Catch::Matchers::WithinAbs(ab_expected, EPSILON));
-    REQUIRE_THAT(c * d, Catch::Matchers::WithinRel(cd_expected, MARGIN) ||
+    REQUIRE_THAT(c.times(d), Catch::Matchers::WithinRel(cd_expected, MARGIN) ||
                            Catch::Matchers::WithinAbs(cd_expected, EPSILON));
-    REQUIRE_THAT(d * c, Catch::Matchers::WithinRel(cd_expected, MARGIN) ||
+    REQUIRE_THAT(d.times(c), Catch::Matchers::WithinRel(cd_expected, MARGIN) ||
                            Catch::Matchers::WithinAbs(cd_expected, EPSILON));
   }
 }
 
 
+// "Scalar * vector" would require overriding the * operator which is beyond
+// the scope of this exercise; see cpp_overloading_vector_solution for this
 TEST_CASE("Vector * scalar", "[times_scalar]") {
-  Vector v1{Vector {1, 2, 3} * 2.5};
+  Vector v1{Vector {1, 2, 3}.times(2.5)};
   Vector expected_v1{2.5, 5.0, 7.5};
   require_almost_equal(v1, expected_v1);
 
-  Vector v2{Vector{7.65, -3.4, 0.9} * 2.0};
-  Vector expected_v2{15.3, -6.8, 1.8};
-  require_almost_equal(v2, expected_v2);
-}
-
-
-TEST_CASE("Scalar * vector", "[scalar_times]") {
-  Vector v1{2.5 * Vector {1, 2, 3}};
-  Vector expected_v1{2.5, 5.0, 7.5};
-  require_almost_equal(v1, expected_v1);
-
-  Vector v2{2.0 * Vector{7.65, -3.4, 0.9}};
+  Vector v2{Vector{7.65, -3.4, 0.9}.times(2.0)};
   Vector expected_v2{15.3, -6.8, 1.8};
   require_almost_equal(v2, expected_v2);
 }
@@ -153,7 +144,7 @@ TEST_CASE("Length and Magnitude", "[length]") {
 TEST_CASE("Output Stream Operator", "[ostream]") {
     const Vector v(1, 2.5, -3.14);
     std::stringstream ss;
-    ss << v;
+    v.print(ss);
     REQUIRE(ss.str() == "(1, 2.5, -3.14)");
 }
 
@@ -162,13 +153,13 @@ TEST_CASE("Zero Vector Operations", "[zero]") {
   const Vector zero;
   const Vector a(1, 2, 3);
 
-  const Vector sum{zero + a};
+  const Vector sum{zero.plus(a)};
   require_almost_equal(sum, a);
 
-  const Vector diff{a - zero};
+  const Vector diff{a.minus(zero)};
   require_almost_equal(diff, a);
 
-  const double dot = zero * a;
+  const double dot = zero.times(a);
   REQUIRE_THAT(dot, Catch::Matchers::WithinRel(0, MARGIN) ||
                     Catch::Matchers::WithinAbs(0, EPSILON));
 
@@ -182,7 +173,7 @@ TEST_CASE("Zero Vector Operations", "[zero]") {
 
 TEST_CASE("Parallel Vectors Cross Product", "[parallel]") {
   const Vector a{1, 2, 3};
-  const Vector b{a * 2.0};  // b is parallel to a
+  const Vector b{a.times(2.0)};  // b is parallel to a
 
   const Vector cross{a.cross(b)};
   REQUIRE_THAT(cross.magnitude(), Catch::Matchers::WithinRel(0, MARGIN) ||
@@ -194,11 +185,11 @@ TEST_CASE("Large Vector Operations", "[large]") {
   const Vector a{10000, 20000, 30000};
   const Vector b{40000, 50000, 60000};
 
-  const Vector sum{a + b};
+  const Vector sum{a.plus(b)};
   const Vector expected_sum{50000, 70000, 90000};
   require_almost_equal(sum, expected_sum);
 
-  double dot{a * b};
+  double dot{a.times(b)};
   const double expected(3200000000);
   REQUIRE_THAT(dot, Catch::Matchers::WithinRel(expected, MARGIN) ||
                     Catch::Matchers::WithinAbs(expected, EPSILON));

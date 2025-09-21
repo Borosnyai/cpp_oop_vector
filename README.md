@@ -51,24 +51,21 @@ class Vector {
 
   + Vector()
   + Vector(double x, double y, double z)
+
+  + plus(const Vector& v) Vector
+  + minus(const Vector& v) Vector
+  + times(double s) Vector
+  + times(const Vector& v) double
+
   + dot(const Vector& other) double
   + length() double
   + magnitude() double
   + cross(const Vector& other) Vector
+
+  + print(std::ostream& os)
 }
 ```
 
-In addition to the API above, your vector has to support the following
-operations:
-
-```cpp
-Vector operator+(const Vector& first, const Vector& second);
-Vector operator-(const Vector& first, const Vector& second);
-double operator*(const Vector& first, const Vector& second);  // dot product
-Vector operator*(const Vector& v, double scalar);  // scalar multiplication
-Vector operator*(double scalar, const Vector& v);  // scalar multiplication
-std::ostream& operator<<(std::ostream& out, const Vector& v);
-```
 
 ## Definition of a Vector's Lengh (Magnitude)
 The `length` or `magnitude` $‖a‖$ of the vector $a$  can be computed with the 
@@ -78,7 +75,7 @@ $$
 \left\|\mathbf{a}\right\|=\sqrt{a_1^2+a_2^2+a_3^2}
 $$
 
-## Coordinate Definition of the Dot Product (`operator*`)
+## Coordinate Definition of the Dot Product
 The dot product of two vectors
 $\mathbf{a} = [a_1, a_2, a_3]$ and $\mathbf{b} = [b_1, b_2, b_3]$ 
 is defined as
