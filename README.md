@@ -52,22 +52,22 @@ class Vector {
   + Vector()
   + Vector(double x, double y, double z)
 
-  + plus(const Vector& v) Vector
-  + minus(const Vector& v) Vector
+  + plus(const Vector& o) Vector
+  + minus(const Vector& o) Vector
   + times(double s) Vector
-  + times(const Vector& v) double
+  + times(const Vector& o) double
 
-  + dot(const Vector& other) double
+  + dot(const Vector& o) double
   + length() double
   + magnitude() double
-  + cross(const Vector& other) Vector
+  + cross(const Vector& o) Vector
 
   + print(std::ostream& os)
 }
 ```
 
 
-## Definition of a Vector's Lengh (Magnitude)
+## Definition of a Vector's Length (Magnitude)
 The `length` or `magnitude` $‖a‖$ of the vector $a$  can be computed with the 
 euclidean norm
 
@@ -90,7 +90,7 @@ $$
 Using column vectors, the dot product can be represented as follows
 
 $$
-\begin{bmatrix}s_1\\s_2\\s_3\end{bmatrix}=
+\begin{bmatrix}s_1 \\ s_2 \\ s_3\end{bmatrix}=
 \begin{bmatrix}a_2b_3-a_3b_2\\a_3b_1-a_1b_3\\a_1b_2-a_2b_1\end{bmatrix}
 $$
 
