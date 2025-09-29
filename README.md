@@ -17,29 +17,26 @@ As an alternative to `make test` (or `ctest`) you can run the individual
 
 ## Instructions
 
-Write library code for representing three dimensional vectors (not to be
-confused with a C++ `std::vector`). In engineering,
-a Euclidean vector or simply a vector is a geometric object that has magnitude 
+Write library code for representing three dimensional euclidean vectors
+(not to be confused with a C++ `std::vector`). In engineering,
+a euclidean vector or simply a vector is a geometric object that has magnitude 
 (or length) and direction.
 
-Such vectors have support many basic operations including 
-addition, subtraction and scalar multiplication. There are also 
+Such vectors have support many basic operations including
+addition, subtraction and scalar multiplication. There are also
 additional binary operations like the dot product and the cross product.
 
 It is your duty to implement a data structure for storing and modifying
 vectors and the most common operations on such vectors.
 
-The public interface of the class must support API laid out in the UML class 
-diagram below. You have to correctly declare the member functions' `const`-ness 
+The public interface of the class must support API laid out in the UML class
+diagram below. You have to correctly declare the member functions' `const`-ness
 in order to allow the provided auto-tests to compile. Place all your
 declarations and definitions inside the appropriate namespace
 (the namespace name must match the namespace used in the provided test cases).
 
-You may store any additional internal properties or add additional private 
-or public member functions. Some of the required operators may be defined
-as class members while others cannot be a member. It is up to you to pick
-the correct approach and decide upon the valid alternatives when appropriate.
-
+You may store any additional internal properties or add additional private
+or public member functions.
 
 ```mermaid
 classDiagram
