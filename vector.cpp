@@ -1,7 +1,3 @@
-
-
-
-
 #include "vector.hpp"
 #include<cmath>
 
@@ -17,20 +13,8 @@ namespace geometry{
     this->y = y;
     this->z = z;
   }
-
-  // Vector: Függvenynek milyen tipusu a visszateresi erteke
-  // 2Vector:: = A Vector osztalybol valositunk meg egy függveny.
-  // plus = A függveny neve
-  // const a parameter listaban, azt jelenti a kapott adat, nem valtozhat meg.
-  // Vector& = Amit kapunk annak mi a tipusa es az & jel közvetlen hozzaferest jelenti.Ez egy pointer, amit refericianalk neveznek!
-  // az o betü = a masik Vector neve (other)
-  // const függvenyen kivül = Függveny nem valtoztatja meg az osztaly adatait.
-
-  Vector Vector::plus(const Vector& o) const{
-    /*Vector result;
-    result.x = this->x + o.x;
-    result.y = this->y + o.y;
-    result.z = this->z + o.z;*/
+ Vector Vector::plus(const Vector& o) const{
+   
     return Vector(this->x + o.x,this->y + o.y,this->z + o.z);
   }
   Vector Vector::minus(const Vector& o) const{
@@ -72,7 +56,7 @@ namespace geometry{
 
     return length();
   }
-  // specialis kimeneti folyam, ami lehet file vagy console output.
+
   void Vector::print(std::ostream& o) const{
     o << "(" << x << ", " << y << ", " << z << ")";
   }
